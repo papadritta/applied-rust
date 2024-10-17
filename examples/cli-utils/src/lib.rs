@@ -10,9 +10,8 @@
 
 use std::io::{BufRead, BufReader};
 
-pub mod config;
 pub mod colors;
-
+pub mod config;
 
 /// This function reads a line from stdin and returns it as a String.
 /// It will panic if it fails to read a line with a message "Failed to read input line".
@@ -37,25 +36,24 @@ fn _read_stdin<R: BufRead>(reader: &mut R) -> String {
 
 #[cfg(test)]
 mod tests {
-   use super::_read_stdin;
-   use std::io::Cursor;
+    use super::_read_stdin;
+    use std::io::Cursor;
 
-   #[test]
-   fn test_read_input() {
-       let input = "Hello, world!\n";
-       let expected_output = "Hello, world!";
-       let mut reader = Cursor::new(input);
-       let output = _read_stdin(&mut reader);
-       assert_eq!(output, expected_output);
-   }
+    #[test]
+    fn test_read_input() {
+        let input = "Hello, world!\n";
+        let expected_output = "Hello, world!";
+        let mut reader = Cursor::new(input);
+        let output = _read_stdin(&mut reader);
+        assert_eq!(output, expected_output);
+    }
 
-   #[test]
-   fn test_read_input_empty() {
-       let input = "";
-       let expected_output = "";
-       let mut reader = Cursor::new(input);
-       let output = _read_stdin(&mut reader);
-       assert_eq!(output, expected_output);
-   }
-
+    #[test]
+    fn test_read_input_empty() {
+        let input = "";
+        let expected_output = "";
+        let mut reader = Cursor::new(input);
+        let output = _read_stdin(&mut reader);
+        assert_eq!(output, expected_output);
+    }
 }

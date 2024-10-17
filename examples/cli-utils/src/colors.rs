@@ -71,14 +71,14 @@
 //!     
 //!      assert_eq!(color_string.colorized, red("Hello, world!"));
 //!      ```
-//!     pub fn paint(&mut self) {
-//!         match self.color {
-//!             Color::Red => self.colorized = red(&self.string),
-//!             Color::Green => self.colorized = green(&self.string),
-//!             Color::Blue => self.colorized = blue(&self.string),
-//!             Color::Bold => self.colorized = bold(&self.string),
-//!         };
-//!     }
+// !     pub fn paint(&mut self) {
+// !         match self.color {
+// !             Color::Red => self.colorized = red(&self.string),
+// !             Color::Green => self.colorized = green(&self.string),
+// !             Color::Blue => self.colorized = blue(&self.string),
+// !             Color::Bold => self.colorized = bold(&self.string),
+// !         };
+// !     }
 //!
 //!      Resets the colorized string to its original state.
 //!     
@@ -105,3 +105,7 @@
 //!     }
 //! }
 //! ```
+
+pub fn red(s: &str) -> String {
+    format!("\x1b[31m{}\x1b[0m", s)
+}

@@ -4,7 +4,7 @@
 //! use cli_utils::config::Logging;
 //! let config = Logging::new();
 //! ```
-//! 
+//!
 pub enum LogLevel {
     Debug,
     Info,
@@ -24,7 +24,7 @@ pub enum LogOutput {
 /// use cli_utils::config::Logging;
 /// let config = Logging::new();
 /// ```
-/// 
+///
 /// Creating a new instance of the Logging struct:
 /// ```
 /// use cli_utils::config::{Logging, LogLevel, LogOutput};
@@ -33,7 +33,7 @@ pub enum LogOutput {
 pub struct Logging {
     pub enabled: bool,
     pub level: LogLevel,
-    pub destination: LogOutput,   
+    pub destination: LogOutput,
 }
 
 impl Logging {
