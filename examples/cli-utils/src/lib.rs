@@ -20,7 +20,7 @@ pub mod config;
 /// use cli_utils::read_stdin;
 /// let input = read_stdin();
 /// ```
-pub fn read_stdin() -> String {
+fn read_stdin() -> String {
     let stdin = std::io::stdin();
     let mut reader = BufReader::new(stdin.lock());
     _read_stdin(&mut reader)
