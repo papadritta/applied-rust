@@ -45,67 +45,63 @@
 //! }
 //!
 //! pub struct ColorString {
-//!     pub color: Color,
+//!     pub colors: Color,
 //!     pub string: String,
 //!     pub colorized: String,
 //! }
 //!
 //! impl ColorString {
-//!      Paints the colorized string based on the color field.
-//!     
-//!      This method takes the value of the `color` field and applies the corresponding color to the `string` field,
-//!      generating a colorized string and assigning it to the `colorized` field.
-//!     
-//!      # Examples
-//!     
-//!      ```
-//!      use cli_utils::colors::*;
-//!     
-//!      let mut color_string = ColorString {
-//!          color: Color::Red,
-//!          string: String::from("Hello, world!"),
-//!          colorized: String::new(),
-//!      };
-//!     
-//!      color_string.paint();
-//!     
-//!      assert_eq!(color_string.colorized, red("Hello, world!"));
-//!      ```
-// !     pub fn paint(&mut self) {
-// !         match self.color {
-// !             Color::Red => self.colorized = red(&self.string),
-// !             Color::Green => self.colorized = green(&self.string),
-// !             Color::Blue => self.colorized = blue(&self.string),
-// !             Color::Bold => self.colorized = bold(&self.string),
-// !         };
-// !     }
+//!     /// Paints the colorized string based on the color field.
+//!     ///
+//!     /// This method takes the value of the `color` field and applies the corresponding color to the `string` field,
+//!     /// generating a colorized string and assigning it to the `colorized` field.
+//!     ///
+//!     /// # Examples
+//!     ///
+//!     /// ```
+//!     /// use cli_utils::colors::*;
+//!     ///
+//!     /// let mut color_string = ColorString {
+//!     ///     color: Color::Red,
+//!     ///     string: String::from("Hello, world!"),
+//!     ///     colorized: String::new(),
+//!     /// };
+//!     ///
+//!     /// color_string.paint();
+//!     ///
+//!     /// assert_eq!(color_string.colorized, red("Hello, world!"));
+//!     /// ```
+//!     pub fn paint(&mut self) {
+//!         match self.color {
+//!             Color::Red => self.colorized = red(&self.string),
+//!             Color::Green => self.colorized = green(&self.string),
+//!             Color::Blue => self.colorized = blue(&self.string),
+//!             Color::Bold => self.colorized = bold(&self.string),
+//!         };
+//!     }
 //!
-//!      Resets the colorized string to its original state.
-//!     
-//!      This method resets the `colorized` field to the original `string` value, removing any applied color or style.
-//!     
-//!      # Examples
-//!     
-//!      ```
-//!      use cli_utils::colors::*;
-//!     
-//!      let mut color_string = ColorString {
-//!          color: Color::Red,
-//!          string: String::from("Hello, world!"),
-//!          colorized: String::new(),
-//!      };
-//!     
-//!      color_string.paint();
-//!      color_string.reset();
-//!     
-//!      assert_eq!(color_string.colorized, color_string.string);
-//!      ```
+//!     /// Resets the colorized string to its original state.
+//!     ///
+//!     /// This method resets the `colorized` field to the original `string` value, removing any applied color or style.
+//!     ///
+//!     /// # Examples
+//!     ///
+//!     /// ```
+//!     /// use cli_utils::colors::*;
+//!     ///
+//!     /// let mut color_string = ColorString {
+//!     ///     color: Color::Red,
+//!     ///     string: String::from("Hello, world!"),
+//!     ///     colorized: String::new(),
+//!     /// };
+//!     ///
+//!     /// color_string.paint();
+//!     /// color_string.reset();
+//!     ///
+//!     /// assert_eq!(color_string.colorized, color_string.string);
+//!     /// ```
 //!     pub fn reset(&mut self) {
 //!         self.colorized = reset(&self.string);
 //!     }
 //! }
 //! ```
-
-pub fn red(s: &str) -> String {
-    format!("\x1b[31m{}\x1b[0m", s)
-}
