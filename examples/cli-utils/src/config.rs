@@ -1,7 +1,7 @@
 //! This module contains the configuration options for the application.
 //! # Examples:
 //! ```
-//! cli_utils::colors::{Color, ColorString};
+//! use cli_utils::config::Logging;
 //! let config = Logging::new();
 //! ```
 //!

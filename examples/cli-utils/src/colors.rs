@@ -105,3 +105,72 @@
 //!     }
 //! }
 //! ```
+
+mod cli_utils {
+    pub mod colors;
+}
+
+use cli_utils::colors::*;
+
+pub fn print_colored_strings() {
+    {
+        println!(
+            "{}{}{}{}{}",
+            red("Red"),
+            green("Green"),
+            blue("Blue"),
+            bold("Bold"),
+            reset("Reset")
+        );
+    };
+}
+
+pub fn red(s: &str) -> String {
+    format!("\x1b[31m{}\x1b[0m", s)
+}
+
+pub fn green(s: &str) -> String {
+    format!("\x1b[32m{}\x1b[0m", s)
+}
+
+pub fn blue(s: &str) -> String {
+    format!("\x1b[34m{}\x1b[0m", s)
+}
+
+pub fn bold(s: &str) -> String {
+    format!("\x1b[1m{}\x1b[0m", s)
+}
+
+pub fn reset(s: &str) -> String {
+    format!("\x1b[0m{}\x1b[0m", s)
+}
+
+pub enum Color {
+    Red,
+    Green,
+    Blue,
+    Bold,
+    Reset,
+}
+
+pub struct ColorString {
+    pub color: Color,
+    pub string: String,
+    pub colorized: String,
+}
+
+impl ColorString {
+    pub fn paint(&mut self) {
+        match self.color {
+            Color::Red => self.colorized = red(&self.string),
+            Color::Green => self.colorized = green(&self.string),
+            Color::Blue => self.colorized = blue(&self.string),
+            Color::Bold => self.colorized = bold(&self.string),
+            Color::Reset => self.colorized = reset(&self.string),
+        };
+    }
+
+    // pub fn reset(&mut self) {
+    //     self.colorized = self.string.clone();
+    // }
+}
