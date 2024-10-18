@@ -36,7 +36,6 @@ pub enum Color {
     Green,
     Blue,
     Bold,
-    Reset,
 }
 
 pub struct ColorString {
@@ -53,11 +52,10 @@ impl ColorString {
             Color::Green => self.colorized = green(&self.string),
             Color::Blue => self.colorized = blue(&self.string),
             Color::Bold => self.colorized = bold(&self.string),
-            Color::Reset => self.colorized = reset(&self.string),
         };
     }
 
-    // pub fn reset(&mut self) {
-    //     self.colorized = self.string.clone();
-    // }
+    pub fn reset(&mut self) {
+        self.colorized = self.string.clone();
+    }
 }
